@@ -1,6 +1,9 @@
 # nuts-revived
 The WYSINMTWYS esoteric programming language Nuts originally implemented by hogefuga.
 
+# Source retrieved from
+[hakatashi/esolang-box](https://github.com/hakatashi/esolang-box/tree/master)
+
 # Implementation notes
 * WTF, EOF is not implemented?!
 
@@ -8,8 +11,11 @@ The WYSINMTWYS esoteric programming language Nuts originally implemented by hoge
 [Roughly described here (Japanese)](https://www.esolangs.blog/specs-nuts/)
 
 # License
-[The original repository](https://github.com/hoge-fuga-0000/Nuts) is not archived at all, so the license is completely unknown.
-If I could have overriden the license, I would relicense this project to:
+[The original repository](https://github.com/hoge-fuga-0000/Nuts) is not archived at all, so the license is unknown.
+But since [hakatashi/esolang-box](https://github.com/hakatashi/esolang-box/tree/master) is licensed under the MIT License and
+the Nuts are taken up with attribution, hoge-fuga-0000/Nuts is likely to be used to be published under the MIT License or similar.
+
+So I am publishing this under the following ISC License:
 
 ```
 ISC License
