@@ -142,30 +142,75 @@ const createRuntime = env => {
    */
   const
     /**
-     * Nuts tokens.
-     * @usage Object.create(token);
+     * Nuts Tokens.
+     * @usage Object.create(Token);
+     */
+    /**
+     * @Token function_
+     * @param body {null|Token}
+     * @description Represents a lambda function.
      */
     function_ = {
       body: null
     },
+    /**
+     * @Token null_
+     * @description Argument for built-in functions.
+     */
     null_ = {},
+    /**
+     * @Token argument
+     * @param index {>=0}
+     * @description Argument for function. @param index means n'th depth
+     */
     argument = {
       index: 0
     },
+    /**
+     * @Token application
+     * @param function {null|Token} Function to apply.
+     * @param argument {null|Token} What to be applied to the function.
+     */
     application = {
       function: null,
       argument: null
     },
+
+    /**
+     * @Token put
+     * @description `application{function: put, argument: church_number}` to `putN{number: N}`.
+     */
     put = {},
+
+    /**
+     * @Token putN
+     * @description `application{function: putN{number: N}, argument: null_}` to `null_`, with side effect of `put_(N)`.
+     */
     putN = {
       number: 0
     },
+
+    /**
+     * @Token increment
+     * @dependedBy @function toNumber
+     */
     increment = {},
+
+    /**
+     * @Token get
+     * @description `application{function: get, argument: null_}` to `church_number` such that original number is 0<=n<=255 which is taken from @function get_.
+     */
     get = {},
+
+    /**
+     * @Token random
+     * @description `application{function: get, argument: null_}` to `church_number` such that original number is 0<=n<=255 which is taken from @function random_.
+     */
     random = {},
 
     /**
      * Keys.
+     * @dependedBy @variable keys
      */
     funcBody = 'body',
     appFunc = 'function',
@@ -173,10 +218,22 @@ const createRuntime = env => {
 
   /**
    * Nuts virtual machine.
+   *
    */
 
   /**
    * Nuts virtual machine components.
+   * @variable root {null|Token}
+   * @description  IDK.
+   *
+   * @variable current {null|Token}
+   * @description IDK.
+   *
+   * @variable stack
+   * @dependedBy @function parse
+   *
+   * @variable keys
+   * @dependedBy @function toNumber, @function exec
    */
   let root = null,
     current = null,
@@ -302,6 +359,7 @@ const createRuntime = env => {
               message: 'unexpected character', line, column
             };
         }
+
         for (;;)
           if (stack.length) {
             const item = stack.pop();

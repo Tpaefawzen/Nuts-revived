@@ -6,6 +6,7 @@ The WYSINMTWYS esoteric programming language Nuts originally implemented by hoge
 
 # Implementation notes
 * WTF, EOF is not implemented?!
+* And WTF that every builtin functions accept only NULL for argument?!
 
 # Specs
 [Roughly described here (Japanese)](https://www.esolangs.blog/specs-nuts/)
